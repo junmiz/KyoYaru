@@ -1,0 +1,19 @@
+<%= stylesheet_link_tag 'todo' %>
+<% provide :title, "todo_list" %>
+
+<div class="container-fluid">
+  <div class="p-5 text-center">
+    <h1>タスクリスト</h1>
+    
+    <%= render 'form', todo: @todo %>
+    
+    <div class="fusen" style="padding-left: 60px;">
+      <% @todos.each do |todo| %>
+        <ul class="list-unstyled">
+          <li><%= todo.content %></li>
+          <%= link_to '削除', todo, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
