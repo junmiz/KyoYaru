@@ -6,13 +6,15 @@
     <h1>タスクリスト</h1>
     
     <%= render 'form', todo: @todo %>
-    
-    <div class="fusen" style="padding-left: 60px;">
+
+    <div class="todo-list row">
       <% @todos.each do |todo| %>
-        <ul class="list-unstyled">
-          <li><%= todo.content %></li>
-          <%= link_to '削除', todo, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </ul>
+        <div class="col-xs-12 col-lg-6 col-xl-3 fusen text-left" style="padding-left: 60px;">
+          <ul class="list-unstyled">
+            <li><%= todo.content %></li>
+            <span class="btn-todo-del"><%= link_to '削除', todo, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+          </ul>
+        </div>
       <% end %>
     </div>
   </div>

@@ -3,7 +3,7 @@ class TodosController < ApplicationController
   before_action :set_todo, only: [:destroy]
   
   def index
-    @todos = Todo.all
+    @todos = Todo.where(user_id: current_user.id)
     @todo = Todo.new
   end
   

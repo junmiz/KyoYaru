@@ -1,13 +1,27 @@
 // Place all the styles related to the todo controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.todo-list {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1400px;
+    
+    /*border: solid 1px red;*/
+}
+.btn-todo-del {
+    
+}
+
 .fusen{
-    width:300px;/*幅はお好きなサイズに*/
-    position:relative;
-    z-index:0;
+    width: 100%;/*幅はお好きなサイズに*/
+    position: relative;
+    z-index: 0;
+    margin: 0 auto;
+    
+    /*border: solid 1px #CCC;*/
 }
 .fusen ul li {
-    font-size: 0.9em;
+    font-size: 1.2em;
     margin: 1.6em 0;
     padding: 1em;
     position: relative;
@@ -26,4 +40,11 @@
     background: rgba(0,0,0,0.5);
     box-shadow: 0 5px 5px rgba(0,0,0,0.3);
     transform: rotate(2deg);
+}
+.fusen ul li:nth-child(odd) { /* 奇数番のli */
+    background: linear-gradient(to right, #ffffcc 0%, #f1f1c1 0.5%, #f1f1c1 13%, #ffffcc 16%);
+}
+.fusen ul li:nth-child(even) { /* 偶数番のli */
+    background: linear-gradient(to right, #FDF8E6 0%, #F5ECDA 0.5%, #F5ECDA 13%, #FDF8E6 16%);
+    margin: 1.6em 0em !important;
 }
