@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  userid: 1
+  content: MyText
+  selected: false
+  order: 1
+  status: 1
+  comp_date: 2018-07-05 00:31:47
+
+two:
+  userid: 1
+  content: MyText
+  selected: false
+  order: 1
+  status: 1
+  comp_date: 2018-07-05 00:31:47

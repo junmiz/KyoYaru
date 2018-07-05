@@ -1,0 +1,21 @@
+<%= stylesheet_link_tag 'tasks' %>
+<% provide :title, "task_list" %>
+
+<div class="container-fluid">
+  <div class="p-5 text-center">
+    <h1>タスクリスト</h1>
+    
+    <%= render 'form', task: @task %>
+
+    <div class="task-list row">
+      <% @tasks.each do |task| %>
+        <div class="col-xs-12 col-lg-6 col-xl-3 fusen text-left" style="padding-left: 60px;">
+          <ul class="list-unstyled">
+            <li><%= task.content %></li>
+            <span class="btn-task-del"><%= link_to '削除', task, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
