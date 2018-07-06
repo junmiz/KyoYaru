@@ -1,0 +1,28 @@
+<%= stylesheet_link_tag 'tasks' %>
+<% provide :title, "task_select" %>
+
+<div class="container-fluid">
+  <div class="p-5 text-center">
+    <h1>タスク選択</h1>
+    <p>今からやるタスクを選択</p>
+
+    <form action="/tasks/select" method="post">
+      <p>
+      <% @tasks.each do |task| %>
+        <%= check_box_tag 'checked[id][]', task.id %>
+        
+        <%= task.id %>
+        <%= task.content %>
+        
+      <% end %>
+      </p>
+      
+      <p><input type="submit" value="選択完了"></p>
+      <input type="hidden" name="authenticity_token" value="r6fFH/olgV75lxN8y1k8OzmcbgIZ6yiJO2Hu/Wq9twKaiQE73m7nilqV6faTlC8KJMIyBN1HCFbKuptY+urnAA==" />
+    </form>
+
+  
+    <%= render './shared/form', task: @task %>
+
+  </div>
+</div>

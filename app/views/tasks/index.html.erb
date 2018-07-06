@@ -5,7 +5,7 @@
   <div class="p-5 text-center">
     <h1>タスクリスト</h1>
     
-    <%= render 'form', task: @task %>
+    <%= render './shared/form', task: @task %>
 
     <div class="task-list row">
       <% @tasks.each do |task| %>
