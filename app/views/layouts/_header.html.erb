@@ -10,6 +10,18 @@
     <ul class="navbar-nav">
       <% if user_signed_in? %>
         <li class="nav-item">
+          <%= link_to "今やるタスク", today_tasks_url, method: :get, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "タスク選択", tasks_select_url, method: :get, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "タスクリスト", tasks_url, method: :get, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "過去のタスク", '/', method: :get, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
       <% else %>
