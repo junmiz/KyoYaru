@@ -1,0 +1,18 @@
+<%= stylesheet_link_tag 'tasks' %>
+<% provide :title, "TodayTask" %>
+
+<div class="container-fluid">
+  <div class="p-5 text-center">
+    <h1>今やるタスク</h1>
+
+      <% @tasks.each do |task| %>
+        <div class="fusen text-left" style="padding-left: 60px; font-size: 64px">
+          <ul class="list-unstyled">
+            <li><%= task.content %></li>
+            <%= task.id %>
+            <span class="btn-task-cmp"><%= link_to '完了', task, method: :complete%></span>
+          </ul>
+        </div>
+      <% end %>
+  </div>
+</div>

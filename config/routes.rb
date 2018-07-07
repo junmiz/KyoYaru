@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post 'tasks/select', to: 'select_tasks#create'
 
   resources :today_tasks, :only => [:index]
+  
+  get 'tasks/today', to: 'today_tasks#index'
 
   root :to => 'static_pages#home'
 end
