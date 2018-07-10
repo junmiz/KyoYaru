@@ -14,6 +14,6 @@ class SelectTasksController < ApplicationController
       task.save
     end
     
-    redirect_to root_url  # ★今からやるタスク画面に変更
+    redirect_to today_tasks_path
   end
 end
