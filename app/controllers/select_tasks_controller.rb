@@ -1,6 +1,6 @@
 class SelectTasksController < ApplicationController
   def index
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.where(selected: false).where(status: Task::STATUS_INCOMPLETE)
     @task = Task.new
   end
   

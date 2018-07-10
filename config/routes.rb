@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   get 'tasks/select', to: 'select_tasks#index'
   post 'tasks/select', to: 'select_tasks#create'
 
-  resources :today_tasks, :only => [:index]
-  
-  get 'tasks/today', to: 'today_tasks#index'
+  #get 'today_tasks', to: 'today_tasks#index'
+  #patch 'today_tasks/:id', to: 'today_tasks#update'
+  resources :today_tasks, :only => [:index, :update]
 
   root :to => 'static_pages#home'
 end

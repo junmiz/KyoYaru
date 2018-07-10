@@ -6,13 +6,15 @@
     <h1>今やるタスク</h1>
 
       <% @tasks.each do |task| %>
-        <div class="fusen text-left" style="padding-left: 60px; font-size: 64px">
-          <ul class="list-unstyled">
-            <li><%= task.content %></li>
-            <%= task.id %>
-            <span class="btn-task-cmp"><%= link_to '完了', task, method: :complete%></span>
-          </ul>
-        </div>
+        <% if task.status == Task::STATUS_INCOMPLETE %>
+          <div class="fusen text-left" style="padding-left: 60px; font-size: 64px">
+            <ul class="list-unstyled">
+              <li><%= task.content %></li>
+              <span class="btn-task-cmp"><%= link_to '完了', today_task_path(task), method: :patch %></span>
+            </ul>
+          </div>
+          <% break %>
+        <% end %>
       <% end %>
   </div>
 </div>

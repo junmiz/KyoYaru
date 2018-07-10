@@ -3,13 +3,16 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:destroy]
   
   def index
-    @tasks = Task.where(user_id: current_user.id)
+    @tasks = current_user.tasks.where(selected: false).where(status: Task::STATUS_INCOMPLETE)
     @task = Task.new
   end
   
   def create
     @task = Task.new(task_params)
+    # ★あとでmigrateファイルにデフォルト値の設定を追加
     @task.user_id = current_user.id
+    @task.selected = false
+    @task.status = Task::STATUS_INCOMPLETE
 
     respond_to do |format|
       if @task.save
