@@ -26,3 +26,84 @@
 
   </div>
 </div>
+
+
+#----------------------------------
+#
+#----------------------------------
+
+<h1>タスク選択</h1>
+<h2>今からやるタスクを選択</h2>
+
+<div class="row">
+  <div class="col-sm">
+    <div class="card">
+      <div class="card-body">
+        <ul class="list-group sortable" style="height: 200px">
+          <% @tasks.each do |task| %>
+          	<li class="list-group-item" value="<%= task.id %>"><%= task.content %> </li>
+          <% end %>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm">
+    <div class="card">
+      <div class="card-body">
+        <ul class="list-group sortable" style="height: 200px" id="selected_ul">
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 新登録ボタン -->
+<div class="row mt-3">
+  <div class="col-sm">
+    <a href="javascript:void(0)" onclick="submit_form_select();" class="btn btn-success">送信</a>
+  </div>
+</div>
+
+<form action="/tasks/select" method="post" id="form_select">
+<!--
+<p><% @tasks.each do |task| %>
+	<%= check_box_tag 'checked[id][]', task.id %>
+	<%= task.content %>
+	
+	<% end %>
+</p>
+
+<p>
+<input type="submit" value="登録する">
+</p>
+-->
+
+<input type="hidden" name="authenticity_token" value="r6fFH/olgV75lxN8y1k8OzmcbgIZ6yiJO2Hu/Wq9twKaiQE73m7nilqV6faTlC8KJMIyBN1HCFbKuptY+urnAA==" />
+
+</form>
+
+<% content_for :javascript do %>
+<script>
+  $(function() {
+    $(".sortable").sortable({
+      connectWith: ".sortable"
+    });
+  });
+
+  // 新登録ボタン
+  function submit_form_select() {
+    // 右の移動されたタスク ID を取ってくる
+    $("#selected_ul li").each(function(index) {
+      var task_id = $(this).prop("value");
+
+      // そのタスク ID を無理やりフォームに hidden でぶっ込む
+      $('<input>', { type:'hidden', name: "checked[id][]", value: task_id }).appendTo($("#form_select"));
+    });
+
+    // submit ボタンを押す
+  　$("#form_select").submit();
+  }
+</script>
+<% end %>
