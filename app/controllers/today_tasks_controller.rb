@@ -3,7 +3,7 @@ class TodayTasksController < ApplicationController
   before_action :set_task, only: [:update]
 
   def index
-    @tasks = current_user.tasks.where(selected: true)
+    @tasks = current_user.tasks.where(selected: true).order(:order)
 
   end
   
