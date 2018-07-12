@@ -17,8 +17,8 @@
           <div class="fusen text-left" style="padding-left: 60px; font-size: 64px">
             <ul class="list-unstyled">
               <li><%= task.content %></li>
-              <span class="btn-task-cmp"><%= link_to '完了', today_task_path(task, btn_id: 0), method: :patch %></span>
-              <span class="btn-task-cmp"><%= link_to 'あとでやる', today_task_path(task, btn_id: 1), method: :patch %></span>
+              <span class="btn-task-cmp btn btn-default"><%= link_to '完了', today_task_path(task, btn_id: 0), method: :patch %></span>
+              <span class="btn-task-cmp btn btn-default"><%= link_to 'あとでやる', today_task_path(task, btn_id: 1), method: :patch %></span>
             </ul>
           </div>
           <% break %>
