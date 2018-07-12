@@ -5,21 +5,16 @@
   <div class="p-5 text-center">
     <h1>今やるタスク</h1>
       <% @tasks.each do |task| %>
-        <p>id=<%= task.id %>
-           order=<%= task.order %>
-           select=<%= task.selected %>
-           status=<%= task.status %>
-           <%= task.content %></p>
-      <% end %>
-
-      <% @tasks.each do |task| %>
         <% if task.status == Task::STATUS_INCOMPLETE %>
           <div class="fusen text-left" style="padding-left: 60px; font-size: 64px">
             <ul class="list-unstyled">
               <li><%= task.content %></li>
-              <span class="btn-task-cmp btn btn-default"><%= link_to '完了', today_task_path(task, btn_id: 0), method: :patch %></span>
-              <span class="btn-task-cmp btn btn-default"><%= link_to 'あとでやる', today_task_path(task, btn_id: 1), method: :patch %></span>
             </ul>
+          </div>
+          
+          <div class="center-block">
+            <%= link_to '完了', today_task_path(task, btn_id: 0), method: :patch, class: "btn btn-primary btn-lg badge-pill pr-4 pl-4" %>
+            <%= link_to 'あとでやる', today_task_path(task, btn_id: 1), method: :patch, class: "btn btn-primary btn-sm badge-pill pr-4 pl-4" %>
           </div>
           <% break %>
         <% end %>
