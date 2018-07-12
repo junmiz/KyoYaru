@@ -4,7 +4,6 @@
 <div class="container-fluid">
   <div class="p-5 text-center">
     <h1>今やるタスク</h1>
-
       <% @tasks.each do |task| %>
         <p>id=<%= task.id %>
            order=<%= task.order %>
@@ -25,5 +24,9 @@
           <% break %>
         <% end %>
       <% end %>
+    
+      </br></br>
+      <p>こんどやる（思いついたタスクを登録）</p>
+      <%= render './shared/form', task: @task %>
   </div>
 </div>

@@ -4,11 +4,12 @@ class TodayTasksController < ApplicationController
 
   def index
     @tasks = current_user.tasks.where(selected: true).order(:order)
+    @task = Task.new
 
   end
   
   def update
-    if params[:id] == 0
+    if params[:btn_id] == '0'
       @task.status = Task::STATUS_COMPLETE
     else
       @task.selected = false
@@ -23,15 +24,19 @@ class TodayTasksController < ApplicationController
     tasks.each do |task|
       if task.status == Task::STATUS_INCOMPLETE
         # 未完了のタスクがあれば今からやるタスク画面にリダイレクト
-        redirect_back fallback_location: root_path, notice: 'Task was successfully complete.' 
+        redirect_back fallback_location: root_path, notice: 'Task was successfully complete.'  and return
       end
     end
     
     # すべてのタスクが完了したら、すべて選択を外す
     tasks.each do |task|
-      task.selected  = false
+      task.selected = false
+      task.save
     end
-    redirect_to tasks_select_url, notice: 'Task was all complete.'
+    if params[:btn_id] == '0'
+      message = 'Task was all complete.'
+    end
+    redirect_to tasks_select_url, notice: message and return
       
   end
 

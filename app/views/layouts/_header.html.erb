@@ -9,17 +9,20 @@
   <div class="collapse navbar-collapse d-lg-flex flex-row-reverse" id="navbarNav">
     <ul class="navbar-nav">
       <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "今やるタスク", today_tasks_url, method: :get, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "タスク選択", tasks_select_url, method: :get, class: "nav-link" %>
-        </li>
+        <% if current_user.tasks.where(selected: true).count >= 1 %>
+          <li class="nav-item">
+            <%= link_to "今やるタスク", today_tasks_url, method: :get, class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "タスク選択", tasks_select_url, method: :get, class: "nav-link" %>
+          </li
+        <% end %>
         <li class="nav-item">
           <%= link_to "タスクリスト", tasks_url, method: :get, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "過去のタスク", '/', method: :get, class: "nav-link" %>
+          <%= link_to "過去のタスク", historys_url, method: :get, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
