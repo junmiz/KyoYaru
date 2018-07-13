@@ -14,24 +14,16 @@ class TasksController < ApplicationController
     @task.selected = false
     @task.status = Task::STATUS_INCOMPLETE
 
-    respond_to do |format|
-      if @task.save
-        #format.html { redirect_to tasks_path, notice: 'Task was successfully created.' }
-        format.html { redirect_back fallback_location: root_path, notice: 'Task was successfully created.' }
-        #format.json { render :index, status: :created, location: @task }
-      else
-        format.html { render :index }
-        #format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    if @task.save
+      redirect_back fallback_location: root_path, notice: 'Task was successfully created.'
+    else
+      render :index
     end
   end
 
   def destroy
     @task.destroy
-    respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
-      #format.json { head :no_content }
-    end
+    redirect_to tasks_url, notice: 'Task was successfully destroyed.' 
   end
   
   private
