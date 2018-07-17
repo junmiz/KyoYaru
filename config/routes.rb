@@ -4,10 +4,12 @@ Rails.application.routes.draw do
 
   resources :today_tasks, :only => [:index, :update]
 
-  get 'tasks/select', to: 'select_tasks#index'
-  post 'tasks/select', to: 'select_tasks#create'
+  #get 'tasks/select', to: 'select_tasks#index'
+  #post 'tasks/select', to: 'select_tasks#create'
 
   resources :tasks, :only => [:index, :create, :destroy]
+  get 'select', to: 'tasks#select_index'
+  patch 'tasks/select', to: 'tasks#select_update'
 
   resources :historys, :only => [:index]  
 
