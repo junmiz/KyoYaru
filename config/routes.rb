@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :today_tasks, :only => [:index, :update]
 
-  #get 'tasks/select', to: 'select_tasks#index'
+  #get 'tasks/select', to: 'tasks#index'
   #post 'tasks/select', to: 'select_tasks#create'
 
   resources :tasks, :only => [:index, :create, :destroy]

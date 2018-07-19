@@ -36,7 +36,7 @@ class TodayTasksController < ApplicationController
     if params[:btn_id] == '0'
       message = 'Task was all complete.'
     end
-    redirect_to tasks_select_url, notice: message and return
+    redirect_to select_url, notice: message and return
       
   end
 

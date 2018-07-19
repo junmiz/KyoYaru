@@ -37,7 +37,8 @@
       </div>
     </div>
     
-    <form action=tasks_select_path method="patch" id="form_select">
+    <form action= <%= tasks_select_path %> method="post" id="form_select">
+      <input type="hidden" name="_method" value="PATCH">
       <!--
       <p><% @tasks.each do |task| %>
       	<%= check_box_tag 'checked[id][]', task.id %>
